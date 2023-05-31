@@ -1,0 +1,36 @@
+//BRUTE FORCE
+int largestRectangle(vector < int > & heights) {
+   
+   int n=heights.size();
+   int l=10000000;
+   int b;
+   int area=-10000;
+  for(int i=0;i<n;i++)
+  {
+    int ar=0;
+    if(i==n-1)
+    {
+      l=heights[i];
+      b=1;
+      ar=l*b;
+      area=max(area,ar);
+      break;
+    }
+    
+    l=heights[i];
+    for(int j=i+1;j<n;j++)
+    {
+      l=min(l,heights[j]);
+      b=j-i+1;
+      ar=l*b;
+      area=max(area,ar);
+    }
+  }
+  if(area<0)
+  {
+    return (-1)*area;
+  }
+  else
+   return area;
+
+ }
